@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>글 제목: {{ mold.title}}</h1><hr>
+<h1>영화 제목: {{ mold.movie_title}}</h1><hr>
+<h1>리뷰 : {{ mold.content}}</h1><hr>
+<h1>영화 등급: {{ mold.rank}}</h1><hr>
+<h1>작성일: {{mold.created_at}}</h1>
+<h1>최근 수정일: {{mold.updated_at}}</h1>
+<hr>
+<a href="{% url 'community:update' mold.pk %}">UPDATE</a>
+<a href="{% url 'community:delete' mold.pk %}">DELETE</a>
+<hr>
+{% endblock  %}

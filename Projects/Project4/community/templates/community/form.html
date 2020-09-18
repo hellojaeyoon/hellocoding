@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Form</h1><hr>
+<form action="" method="POST">
+{% csrf_token %}
+
+{{mold.as_p}}
+<input type="submit" value='Enter'>
+</form>
+<hr>
+{% endblock %}

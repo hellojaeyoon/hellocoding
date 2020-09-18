@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>ReviewList</h1>
+<hr>
+
+    {% for review in reviews %}
+    <div class="row">
+        <div class="card my-3 col" style="width: 18rem;">
+            <div class="card-body">
+                <a href="{% url 'community:detail' review.pk %}">
+                <h5 class="card-title">글 제목: {{ review.title}}</h5>
+                </a>
+                <p class="card-text">영화 제목: {{ review.movie_title}}</p>
+                <p> Rank: {{ review.rank}} </p>
+
+                <a href="https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query={{ review.movie_title }}" 
+                class="btn btn-primary" target="_blank">영화 정보보기</a>
+                <p class='text-center'>(네이버 검색 결과로 연결됩니다.)</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<div class="mb-3">
+{% if posts.has_previous %}
+    <a href="?page=1">맨 앞으로</a>
+    <a href="?page={{posts.previous_page_number}}">이전으로</a>
+{% endif %}
+    <span>{{posts.number}}</span>
+    <span>/</span>
+    <span>{{posts.paginator.num_pages}}</span>
+{% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">다음으로</a>
+    <a href="?page={{posts.paginator.num_pages}}">맨뒤로</a>
+{% endif %}
+</div>
+
+{% endblock content %}
