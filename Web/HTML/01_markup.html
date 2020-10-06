@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My First Markup</title>
+</head>
+<body>
+    <header>
+        <img src="labyrinth.jpg" alt="라브린스" width="200px">
+        <h1> 미궁난이도 설문 </h1>
+    </header>
+    <section>
+        <form action="#" method="GET">
+            <div>
+                <label for="name">본인의 아이디를 입력해주세요</label><br>
+                <input type="text" id="name" autofocus>
+            </div>
+            <div>
+                <label for="problem">가장 최근에 푼 미궁이름을 선택해주세요</label>
+                <select name="problem" id="problem">
+                    <option value="">선택</option>
+                    <option value="Maze">Maze</option>
+                    <option value="White Room">White Room</option>
+                    <option value="Black Room">Black Room</option>
+                    <option value="Out of Jail" disabled>Out of Jail</option>
+                </select>
+            </div>
+            <div>
+                <p>자신이 느꼈던 어려운/쉬운 정도를 선택해주세요</p>
+                <input type="radio" name="level" id="challenging" value="challenging">
+                <label for="challenging">매우 어려웠음</label>
+                <input type="radio" name="level" id="hard" value="hard">
+                <label for="hard">어려웠음</label>
+                <input type="radio" name="level" id="soso" value="soso">
+                <label for="soso">그냥저냥 괜찮았음</label>
+                <input type="radio" name="level" id="easy" value="easy">
+                <label for="easy">쉬웠음</label>
+                <input type="radio" name="level" id="tooeasy" value="tooeasy">
+                <label for="tooeasy">매우 쉬웠음</label>
+            </div>
+            <input type="submit" value="제출하기">
+        </form>
+    </section>
+    <footer>
+        Google 설문지를 통해 비밀번호를 제출하지마시오
+    </footer>
+</body>
+</html>

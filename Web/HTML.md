@@ -22,9 +22,9 @@
 
 **Markup** **Language **란?
 
-- 태그 등을 이용해 문서나 데이터의 구조를 명시하는 언어 (<h1>,<h2>, etc)
+- 태그 등을 이용해 문서나 데이터의 구조를 명시하는 언어 (`<h1>`,`<h2>`, etc)
 - "마크업을 한다" 는 것은 제목이 제목이라고, 본문이 본문이라고 마킹을 하는것이다
-- 예를들어 <h1>은 단순히 글자가 커디는게 아닌 의미론적으로 핵심주제를 말하는것이다
+- 예를들어` <h1>`은 단순히 글자가 커디는게 아닌 의미론적으로 핵심주제를 말하는것이다
 - Python등의 프로그래밍언어와는 다르게, 그저 표현하기만 한다
 - ex) HTML, Markdown
 
@@ -155,10 +155,119 @@
 
 
 
-
-
-
-
 ###  Semantic Web(시맨틱 웹)
 
 - 웹에 존재하는 수많은 웹페이지들에 메타데이터를 부여하여, 기존의 단순한 데이터 집합이었던 웹페이지를 '의미'와 '관련성'을 가지는 거대한 데이터베이스로 구축하고자 하는 발상
+
+---
+
+## HTML 문서 구조화
+
+- Group Contents
+
+  - `<p>` : paragraph
+  - `<hr>`: headline
+  - `<ol>` `<ul>` : orderedlist, unorderedlist
+
+- Text Related
+
+  - `<a>`: 하이퍼링크를 만들어주는 태그
+
+  - `<b>` vs `<strong>` 
+
+    - b는 bold의 약자, strong도 똑같이 글자를 굵게 만들어준다
+
+    - 하지만 `strong`태그는 시멘틱태그로, 의미론적으로 부여를 해놓은 태그이다
+    - 예를들면 시각장애인을 위한 검색엔진시스템에서 strong태그는 중요하다고 읽는다
+
+  - `<i>` vs `<em>`
+
+    - 둘 다 이태릭체로 바꾸어줌
+
+  - `<span>`, `<br>`, `<img>` 등
+
+- Table
+
+  - `<tr>`,  `<td>`, `<th>`
+    - 행을 알려주는태그, 행의 제목, 열을 나타내는 태그
+  - `<thead>` . `<tbody>`. `<tfoot>`
+    - 태이블을 구조적으로 나워주는 태그
+  - `<caption>`
+  - 셀 병합 속성: `<colspan>`, `<rowspan>`
+  - `scope` 속성
+  - `<col>`, `<colgroup>`
+
+- Form
+  - `<form>`은 서버에서 처리될 데이터를 제공하는 역할 - 매우 중요하다
+  - `<form>`의 기본 속성으로는
+    - action : 어디로 보낼지
+    - method : GET, POST 등의 방법
+
+- input
+  - 다양한 타입을 가지는 입력 데이터 필드(form 태그 안에는 반드시 input 태그가 존재한다)
+  - `<label>` : 입력 요소의 캡션
+  - input의 공통 속성
+    - name, placeholder
+    - required
+    - autofocus
+
+---
+
+Ex) 미궁난이도 설문 페이지 만들기
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My First Markup</title>
+</head>
+<body>
+    <header>
+        <img src="labyrinth.jpg" alt="라브린스" width="200px">
+        <h1> 미궁난이도 설문 </h1>
+    </header>
+    <section>
+        <form action="#" method="GET">
+            <div>
+                <!-- for="" 안에 들어가는것에 대한 label을 뜻함 -->
+                <label for="name">본인의 아이디를 입력해주세요</label><br>
+                <!-- autofocus: 페이지에 들어가면 바로 그곳에 커서가 가있음 -->
+                <input type="text" id="name" autofocus>
+            </div>
+            <div>
+                <label for="problem">가장 최근에 푼 미궁이름을 선택해주세요</label>
+                <select name="problem" id="problem">
+                    <!-- url 뒤에 "?problem="뒤에 올 각 선택지의 값이 value이다 -->
+                    <option value="">선택</option>
+                    <option value="Maze">Maze</option>
+                    <option value="White Room">White Room</option>
+                    <option value="Black Room">Black Room</option>
+                    <!-- disabled는 선택하지 못하는 option으로 바꾼다 -->
+                    <option value="Out of Jail" disabled>Out of Jail</option>
+                </select>
+            </div>
+            <div>
+                <p>자신이 느꼈던 어려운/쉬운 정도를 선택해주세요</p>
+                <input type="radio" name="level" id="challenging" value="challenging">
+                <label for="challenging">매우 어려웠음</label>
+                <input type="radio" name="level" id="hard" value="hard">
+                <label for="hard">어려웠음</label>
+                <input type="radio" name="level" id="soso" value="soso">
+                <label for="soso">그냥저냥 괜찮았음</label>
+                <input type="radio" name="level" id="easy" value="easy">
+                <label for="easy">쉬웠음</label>
+                <input type="radio" name="level" id="tooeasy" value="tooeasy">
+                <label for="tooeasy">매우 쉬웠음</label>
+            </div>
+            <input type="submit" value="제출하기">
+        </form>
+    </section>
+    <footer>
+        Google 설문지를 통해 비밀번호를 제출하지마시오
+    </footer>
+</body>
+</html>
+```
+
+![image-20201006215155576](HTML.assets/image-20201006215155576.png)
